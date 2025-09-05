@@ -1,0 +1,217 @@
+.touch-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.controls-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+    font-weight: bold;
+    border: 3px solid #ffffff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.control-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.control-btn:active {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(0.92);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Специфичные стили для каждой кнопки */
+.control-btn.up {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+}
+
+.control-btn.down {
+    background: linear-gradient(145deg, #2196F3, #1976D2);
+}
+
+.control-btn.left {
+    background: linear-gradient(145deg, #FF9800, #F57C00);
+}
+
+.control-btn.right {
+    background: linear-gradient(145deg, #F44336, #D32F2F);
+}
+
+/* Эффекты при нажатии для каждой кнопки */
+.control-btn.up:active {
+    background: linear-gradient(145deg, #45a049, #4CAF50);
+}
+
+.control-btn.down:active {
+    background: linear-gradient(145deg, #1976D2, #2196F3);
+}
+
+.control-btn.left:active {
+    background: linear-gradient(145deg, #F57C00, #FF9800);
+}
+
+.control-btn.right:active {
+    background: linear-gradient(145deg, #D32F2F, #F44336);
+}
+
+/* Адаптивность для разных размеров экранов */
+@media (max-width: 768px) {
+    .touch-controls {
+        bottom: 20px;
+        right: 20px;
+        gap: 6px;
+    }
+    
+    .controls-row {
+        gap: 12px;
+    }
+    
+    .control-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        border-width: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .touch-controls {
+        bottom: 15px;
+        right: 15px;
+        gap: 5px;
+    }
+    
+    .controls-row {
+        gap: 10px;
+    }
+    
+    .control-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+        border-width: 2px;
+    }
+}
+
+@media (max-width: 320px) {
+    .touch-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Портретная ориентация */
+@media (max-height: 600px) and (orientation: portrait) {
+    .touch-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Ландшафтная ориентация */
+@media (max-height: 400px) and (orientation: landscape) {
+    .touch-controls {
+        bottom: 5px;
+        right: 5px;
+        transform: scale(0.8);
+    }
+    
+    .control-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+/* Для устройств с поддержкой hover (не touch) */
+@media (hover: hover) and (pointer: fine) {
+    .touch-controls {
+        display: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.touch-controls {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Предотвращение выделения текста при долгом нажатии */
+.control-btn {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Улучшенная доступность для скринридеров */
+.control-btn::before {
+    content: attr(aria-label);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+/* Опционально */
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.control-btn:disabled:active {
+    transform: none;
+}
