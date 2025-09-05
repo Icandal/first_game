@@ -1,0 +1,14 @@
+.Rocket {
+    position: absolute;
+    content: url(../../imgs/Rocket.png);
+    rotate: 180deg;
+    width: 50px;
+    height: 125px;
+    color: white;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: left 0.3s ease, top 0.3s ease;
+}
